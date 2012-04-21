@@ -1,0 +1,31 @@
+/* 60px column, 20px gutter, 12 columns = 960px layout */
+$column_width      : 60px;
+$gutter_width      : 20px;
+$number_of_columns : 12;
+
+@for $count from 1 through $number_of_columns {
+  .grid_#{$count}{
+    width: ($column_width * $count) + ($gutter_width * ($count - 1));
+  }
+}
+
+.container{
+  margin: 0 auto;
+}
+
+.column {
+  margin: 0 10px;
+  overflow: hidden;
+  float: left;
+  display: inline;
+}
+.row {
+  width: ($column_width + $gutter_width) * $number_of_columns;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.row .row {
+  margin: 0 -10px;
+  width: auto;
+  display: inline-block;
+}

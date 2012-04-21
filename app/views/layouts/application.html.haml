@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %title Sketchpad
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    #top
+      .row
+        .column.grid_8
+          App nav
+        .column.grid_4
+          %ul#user_nav
+            %li= link_to 'My Account', '#'
+            %li= link_to 'Sign out', '#'
+
+    #main
+      = yield
+
+    #footer
+      .row
+        .column.grid_12
+          #{link_to 'Privacy Policy', '#'} &middot; #{link_to 'Terms of Use', '#'}<br/>
+          Sketchpad is a service from
+          = link_to 'Origami Ltd', 'http://origami.co.uk'

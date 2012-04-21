@@ -1,0 +1,88 @@
+@import "configuration";
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Droid Sans'), local('DroidSans'), url('http://themes.googleusercontent.com/static/fonts/droidsans/v3/s-BiyweUPV0v-yRb-cjciMDdSZkkecOE1hvV7ZHvhyU.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url('http://themes.googleusercontent.com/static/fonts/droidsans/v3/EFpQQyG9GqCrobXxL-KRMcBaWKZ57bY3RXgXH6dOjZ0.ttf') format('truetype');
+}
+
+body{
+  margin    : 0;
+  font-size : 100%;
+  font-family: 'Droid Sans', arial, serif;
+  background-color: $main_bg_colour;
+}
+
+a{
+  color: $link_colour;
+  text-decoration: none;
+  display: inline-block;
+  &:hover{
+    color: darken($link_colour, 5);
+    text-decoration: underline;
+  }
+}
+
+#top{
+  background-color: $top_bg_colour;
+  border-bottom: 5px solid #E9F1E2;
+
+  ul#user_nav{
+    text-align : right;
+    margin     : 0;
+    padding    : 5px 0;
+
+    li{
+      list-style-type : none;
+      display         : inline-block;
+    }
+
+    a{
+      color : #fff;
+      font-weight: normal;
+      font-size: 0.75em;
+      text-decoration:none;
+      padding: 5px 10px;
+      position:relative;
+      display:inline-block;
+      -webkit-transition:border-color .218s;
+      -moz-transition:border .218s;
+      -o-transition:border-color .218s;
+      transition:border-color .218s;
+      background: lighten($top_bg_colour, 5);
+      border: solid 1px darken($top_bg_colour, 5);
+      border-radius:2px;
+      -webkit-border-radius:2px;
+      -moz-border-radius:2px;
+      margin-left:10px;
+
+      &:hover{
+        border-color: darken($top_bg_colour, 20);
+      }
+      &:active{
+        background-color: darken($top_bg_colour, 20);
+      }
+    }
+  }
+}
+
+.sketch{
+  height : 200px;
+  border : 1px solid darken($main_bg_colour, 5);
+  margin-bottom: 10px;
+}
+
+#footer{
+  text-align    : right;
+  margin-top    : 2em;
+  margin-bottom : 2em;
+  color         : lighten($top_bg_colour, 20);
+  font-size     : 0.75em;
+}
