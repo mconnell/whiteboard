@@ -1,0 +1,35 @@
+.container
+  .row
+    .column.grid_12
+      %h1 Edit #{resource_name.to_s.humanize}
+
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = devise_error_messages!
+
+        .email
+          = f.label :email
+          %br/
+          = f.email_field :email
+
+        .password
+          = f.label :password
+          %i (leave blank if you don't want to change it)
+          %br/
+          = f.password_field :password, :autocomplete => "off"
+
+        .password_confirmation
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation
+
+        .current_password
+          = f.label :current_password
+          %i (we need your current password to confirm your changes)
+          %br/
+          = f.password_field :current_password
+
+        .submit
+          = f.submit "Update"
+
+
+      = render 'links'

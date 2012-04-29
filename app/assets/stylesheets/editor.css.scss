@@ -1,0 +1,8 @@
+@import "configuration";
+
+.layer{
+  border           : 1px solid darken($main_bg_colour, 5);
+  background-color : #fff;
+  width            : 938px;
+  height           : 400px;
+}
