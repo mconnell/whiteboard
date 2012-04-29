@@ -1,0 +1,14 @@
+.container
+  .row
+    .column.grid_12
+      %h1 Listing drawings
+      = link_to 'New Drawing', new_drawing_path
+
+  - @drawings.each_slice(3) do |row|
+    .row
+      - row.each do |drawing|
+        .column.grid_4
+          .preview
+            = drawing.id
+            = link_to 'Edit', edit_drawing_path(drawing)
+    %br/

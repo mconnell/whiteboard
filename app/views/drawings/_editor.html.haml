@@ -1,0 +1,34 @@
+.pens
+  .pen#black_pen
+  .pen#red_pen
+  .pen#blue_pen
+  .pen#green_pen
+
+#editor
+
+= form_for @drawing do |f|
+  = f.hidden_field :data
+  = f.submit
+
+:javascript
+  var sketchpad = Raphael.sketchpad("editor", {
+    width: 938,
+    height: 550,
+    editing: true
+  });
+
+  sketchpad.pen().color('#3A3635');
+
+  // When the sketchpad changes, update the input field.
+  sketchpad.change(function() {
+    $("#drawing_data").val(sketchpad.json());
+  });
+
+  $('#black_pen').click(function(){ sketchpad.pen().color('#3A3635'); });
+  $('#red_pen').click(function(){ sketchpad.pen().color('#E0312C'); });
+  $('#blue_pen').click(function(){ sketchpad.pen().color('#184E96'); });
+  $('#green_pen').click(function(){ sketchpad.pen().color('#178D75'); });
+
+- if @drawing.persisted?
+  :javascript
+    sketchpad.json($('#drawing_data').val());

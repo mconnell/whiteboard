@@ -1,0 +1,11 @@
+.container
+  .row
+    .column.grid_12
+      %h1 Drawing
+      %p
+        %b Data:
+        = @drawing.data
+
+      = link_to 'Edit', edit_drawing_path(@drawing)
+      |
+      = link_to 'Back', drawings_path

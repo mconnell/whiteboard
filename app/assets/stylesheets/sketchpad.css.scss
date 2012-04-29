@@ -73,10 +73,33 @@ a{
   }
 }
 
-.sketch{
-  height : 200px;
+.preview{
+  border : 1px solid darken($main_bg_colour, 5);
+  background-color    : #fff;
+  background-image    : url('/assets/loading.gif');
+  background-position : center center;
+  background-repeat   : no-repeat;
+  height              : 200px;
+}
+
+#editor{
   border : 1px solid darken($main_bg_colour, 5);
   margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.pens{
+  .pen{
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    display: inline-block;
+
+    &#black_pen{ background-color: $black_pen; }
+    &#blue_pen { background-color: $blue_pen; }
+    &#red_pen  { background-color: $red_pen; }
+    &#green_pen{ background-color: $green_pen; }
+  }
 }
 
 #footer{
