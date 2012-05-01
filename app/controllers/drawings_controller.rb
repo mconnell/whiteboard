@@ -5,7 +5,7 @@ class DrawingsController < ApplicationController
   end
 
   def show
-    @drawing = current_user.drawings.find(params[:id])
+    redirect_to edit_drawing_path(params[:id])
   end
 
   def new
