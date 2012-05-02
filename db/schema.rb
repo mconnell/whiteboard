@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120429120917) do
+ActiveRecord::Schema.define(:version => 20120502221412) do
 
   create_table "drawings", :force => true do |t|
     t.integer  "user_id"
     t.text     "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "png_file_path"
   end
 
   create_table "users", :force => true do |t|

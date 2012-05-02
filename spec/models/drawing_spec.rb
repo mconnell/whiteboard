@@ -16,4 +16,29 @@ describe Drawing do
       SVG
     end
   end
+
+  describe "generate_png_file" do
+    it "generates a png file.. duh" do
+      drawing = Drawing.new(:data => data)
+      drawing.user_id = '123'
+      drawing.save
+
+      drawing.generate_png_file
+      drawing.png_file_path.should == "/pngs/123_#{drawing.id}_#{drawing.created_at.to_i}.png"
+    end
+  end
+
+  describe "deleting a drawing" do
+    it "removes associated png file, if exists" do
+      drawing = Drawing.new(:data => data)
+      drawing.user_id = '123'
+      drawing.save
+      drawing.generate_png_file
+
+      file_path = Rails.root.join("public#{drawing.png_file_path}")
+      assert File.exists?(file_path)
+      drawing.destroy
+      assert !File.exists?(file_path)
+    end
+  end
 end
