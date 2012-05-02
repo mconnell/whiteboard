@@ -9,6 +9,5 @@
       - row.each do |drawing|
         .column.grid_4
           .preview
-            = drawing.id
-            = link_to 'Edit', edit_drawing_path(drawing)
+            = link_to image_tag(drawing.png_file_path), edit_drawing_path(drawing)
     %br/

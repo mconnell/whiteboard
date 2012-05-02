@@ -3,10 +3,11 @@ class Drawing < ActiveRecord::Base
 
   belongs_to :user
 
+  after_create :generate_png_file
   after_destroy :remove_png_file
 
   WIDTH  = 938
-  HEIGHT = 400
+  HEIGHT = 550
 
   def to_svg
     svg = [
@@ -23,7 +24,7 @@ class Drawing < ActiveRecord::Base
     temp_file = File.new("/tmp/#{file_name}.svg", 'w')
     temp_file.write(self.to_svg)
     temp_file.close
-    `convert #{temp_file.path} #{Rails.root.join("public", "pngs", "#{file_name}.png")}`
+    `convert #{temp_file.path} -resize 298x175 #{Rails.root.join("public", "pngs", "#{file_name}.png")}`
     File.delete(temp_file)
     update_attribute :png_file_path, "/pngs/#{file_name}.png"
   end
