@@ -28,6 +28,7 @@ class Drawing < ActiveRecord::Base
     File.delete(temp_file)
     update_column :png_file_path, "/pngs/#{file_name}.png"
   end
+  handle_asynchronously :generate_png_file
 
   def data_to_svg_paths
     paths = JSON.parse(data)
@@ -41,4 +42,6 @@ class Drawing < ActiveRecord::Base
   def remove_png_file
     File.delete Rails.root.join("public#{png_file_path}")
   end
+  handle_asynchronously :remove_png_file
+
 end
