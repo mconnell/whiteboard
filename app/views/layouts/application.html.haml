@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Sketchpad
+    %title Whiteboard
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -10,7 +10,7 @@
     #top
       .row
         .column.grid_8
-          = link_to 'Drawings', drawings_path
+          = link_to 'My Whiteboards', drawings_path
         .column.grid_4
           %ul#user_nav
             - if user_signed_in?
@@ -27,5 +27,5 @@
         .column.grid_12
           #{link_to 'Privacy Policy', static_path('privacy_policy')} &middot;
           #{link_to 'Terms of Use', static_path('terms_of_use')}<br/>
-          Sketchpad is a service from
+          Whiteboard is a service from
           = link_to 'Origami Ltd', 'http://origami.co.uk'
