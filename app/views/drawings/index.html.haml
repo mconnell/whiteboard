@@ -1,8 +1,8 @@
 .container
   .row
     .column.grid_12
-      %h1 Listing drawings
-      = link_to 'New Drawing', new_drawing_path
+      %h1 My Whiteboards
+      = link_to 'Create a New Whiteboard', new_drawing_path
 
   - @drawings.each_slice(3) do |row|
     .row

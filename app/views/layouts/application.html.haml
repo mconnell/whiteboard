@@ -15,10 +15,10 @@
           %ul#user_nav
             - if user_signed_in?
               %li= link_to 'My Settings', edit_user_registration_path
-              %li= link_to 'Sign out', destroy_user_session_path, :method => :delete
+              %li= link_to 'Sign Out', destroy_user_session_path, :method => :delete
             - else
-              %li= link_to 'Sign up', new_user_registration_path
-              %li= link_to 'Sign in', new_user_session_path
+              %li= link_to 'Sign Up', new_user_registration_path
+              %li= link_to 'Sign In', new_user_session_path
     #main
       = yield
 
@@ -28,4 +28,4 @@
           #{link_to 'Privacy Policy', static_path('privacy_policy')} &middot;
           #{link_to 'Terms of Use', static_path('terms_of_use')}<br/>
           Whiteboard is a service from
-          = link_to 'Origami Ltd', 'http://origami.co.uk'
+          = link_to 'Mark Connell', 'http://markconnell.co.uk'
