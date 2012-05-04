@@ -5,6 +5,7 @@ gem 'jquery-rails', '2.0.2'
 gem 'haml',         '3.1.4'
 gem 'high_voltage', '1.0.1'
 gem 'devise',       '2.0.4'
+gem 'delayed_job_active_record', '0.3.2'
 
 group :development, :test do
   gem 'rspec-rails', '2.8.1'
