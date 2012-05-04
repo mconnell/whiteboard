@@ -1,7 +1,7 @@
 class DrawingsController < ApplicationController
 
   def index
-    @drawings = current_user.drawings
+    @drawings = current_user.drawings.order('updated_at DESC')
   end
 
   def show
