@@ -29,7 +29,6 @@ class Drawing < ActiveRecord::Base
     update_column :png_file_path, "/pngs/#{file_name}.png"
   end
 
-  private
   def data_to_svg_paths
     paths = JSON.parse(data)
     paths.map do |path|
