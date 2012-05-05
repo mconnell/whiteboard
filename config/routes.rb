@@ -1,4 +1,4 @@
-Sketchpad::Application.routes.draw do
+Whiteboard::Application.routes.draw do
   resources :drawings
 
   devise_for :users
