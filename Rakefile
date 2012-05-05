@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Whiteboard::Application.load_tasks
+WhiteboardApp::Application.load_tasks

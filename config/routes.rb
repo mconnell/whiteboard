@@ -1,4 +1,4 @@
-Whiteboard::Application.routes.draw do
+WhiteboardApp::Application.routes.draw do
   resources :drawings
 
   devise_for :users
