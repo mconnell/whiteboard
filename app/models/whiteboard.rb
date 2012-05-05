@@ -1,4 +1,4 @@
-class Drawing < ActiveRecord::Base
+class Whiteboard < ActiveRecord::Base
   attr_accessible :data
 
   belongs_to :user
@@ -11,7 +11,7 @@ class Drawing < ActiveRecord::Base
 
   def to_svg
     svg = [
-      "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" width=\"#{Drawing::WIDTH}\" height=\"#{Drawing::HEIGHT}\" xml:space=\"preserve\">",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" width=\"#{Whiteboard::WIDTH}\" height=\"#{Whiteboard::HEIGHT}\" xml:space=\"preserve\">",
       "<desc>Created with Raphael</desc>",
       "<defs></defs>",
       data_to_svg_paths,

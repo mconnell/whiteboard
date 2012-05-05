@@ -1,8 +1,8 @@
 WhiteboardApp::Application.routes.draw do
-  resources :drawings
+  resources :whiteboards
 
   devise_for :users
 
   match '/:id' => 'pages#show', :as => :static, :via => :get
-  root :to => 'drawings#index'
+  root :to => 'whiteboards#index'
 end

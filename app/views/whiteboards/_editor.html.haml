@@ -6,7 +6,7 @@
 
 #editor
 
-= form_for @drawing do |f|
+= form_for @whiteboard do |f|
   = f.hidden_field :data
   = f.submit
 
@@ -21,7 +21,7 @@
 
   // When the sketchpad changes, update the input field.
   sketchpad.change(function() {
-    $("#drawing_data").val(sketchpad.json());
+    $("#whiteboard_data").val(sketchpad.json());
   });
 
   $('#black_pen').click(function(){ sketchpad.pen().color('#3A3635'); });
@@ -29,6 +29,6 @@
   $('#blue_pen').click(function(){ sketchpad.pen().color('#184E96'); });
   $('#green_pen').click(function(){ sketchpad.pen().color('#178D75'); });
 
-- if @drawing.persisted?
+- if @whiteboard.persisted?
   :javascript
-    sketchpad.json($('#drawing_data').val());
+    sketchpad.json($('#whiteboard_data').val());
