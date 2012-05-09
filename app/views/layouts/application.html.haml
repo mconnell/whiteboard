@@ -9,15 +9,13 @@
   %body
     #top
       .row
-        .column.grid_8
-          = link_to 'My Whiteboards', whiteboards_path
-        .column.grid_4
+        .column.grid_12
           %ul#user_nav
             - if user_signed_in?
-              %li= link_to 'My Settings', edit_user_registration_path
+              %li= link_to 'My Details', edit_user_registration_path
               %li= link_to 'Sign Out', destroy_user_session_path, :method => :delete
             - else
-              %li= link_to 'Sign Up', new_user_registration_path
+              %li= link_to 'Create an Account', new_user_registration_path
               %li= link_to 'Sign In', new_user_session_path
     #main
       = yield
@@ -27,5 +25,5 @@
         .column.grid_12
           #{link_to 'Privacy Policy', static_path('privacy_policy')} &middot;
           #{link_to 'Terms of Use', static_path('terms_of_use')}<br/>
-          Whiteboard is a service from
+          Whiteboard is a work in progress from
           = link_to 'Mark Connell', 'http://markconnell.co.uk'

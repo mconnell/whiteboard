@@ -32,6 +32,14 @@ body{
   background-color: $main_bg_colour;
 }
 
+h1{
+  a{
+    font-size   : 0.5em;
+    font-weight : normal;
+    margin-left : 0em;
+  }
+}
+
 a{
   color: $link_colour;
   text-decoration: none;
@@ -43,13 +51,18 @@ a{
 }
 
 #top{
-  background-color: $top_bg_colour;
-  border-bottom: 5px solid #E9F1E2;
+  .row{
+    position: relative;
+    overflow: visible;
+  }
 
   ul#user_nav{
-    text-align : right;
-    margin     : 0;
-    padding    : 5px 0;
+    position : absolute;
+    top      : 0;
+    right    : 10px;
+    margin   : 0;
+    padding  : 5px 0;
+    display  : block;
 
     li{
       list-style-type : none;
@@ -57,7 +70,7 @@ a{
     }
 
     a{
-      color : #fff;
+      color : $link_colour;
       font-weight: normal;
       font-size: 0.75em;
       text-decoration:none;
@@ -68,18 +81,15 @@ a{
       -moz-transition:border .218s;
       -o-transition:border-color .218s;
       transition:border-color .218s;
-      background: lighten($top_bg_colour, 5);
-      border: solid 1px darken($top_bg_colour, 5);
-      border-radius:2px;
-      -webkit-border-radius:2px;
-      -moz-border-radius:2px;
-      margin-left:10px;
+      background: darken($main_bg_colour, 3);
+      border: solid 2px darken($main_bg_colour, 6);
+      border-radius         : 2px;
+      -webkit-border-radius : 2px;
+      -moz-border-radius    : 2px;
+      margin-left           : 10px;
 
-      &:hover{
-        border-color: darken($top_bg_colour, 20);
-      }
-      &:active{
-        background-color: darken($top_bg_colour, 20);
+      &:hover, &:active{
+        border-color: darken($main_bg_colour, 20);
       }
     }
   }

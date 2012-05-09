@@ -4,11 +4,11 @@
   .pen#blue_pen
   .pen#green_pen
 
-#editor
-
 = form_for @whiteboard do |f|
   = f.hidden_field :data
   = f.submit
+
+#editor
 
 :javascript
   var sketchpad = Raphael.sketchpad("editor", {

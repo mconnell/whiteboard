@@ -1,7 +1,9 @@
 .container
   .row
     .column.grid_12
-      %h1 Edit #{resource_name.to_s.humanize}
+      %h1
+        My Details
+        = link_to '← Return to whiteboards', whiteboards_path
 
       = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
         = devise_error_messages!
@@ -30,6 +32,3 @@
 
         .submit
           = f.submit "Update"
-
-
-      = render 'links'

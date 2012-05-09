@@ -1,7 +1,8 @@
 .container
   .row
     .column.grid_12
-      %h1 New drawing
+      %h1
+        Edit Whiteboard
+        = link_to '← Return to whiteboards', whiteboards_path
 
       = render 'editor'
-      = link_to 'Back', whiteboards_path
