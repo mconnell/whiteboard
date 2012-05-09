@@ -1,4 +1,22 @@
 .container
   .row
     .column.grid_12
-      %h1 Terms of Use
+      %h1
+        Terms of Use
+        - if user_signed_in?
+          = link_to '← Return to whiteboards', whiteboards_path
+
+      %h2 Be a good citizen ^_^
+      %p
+        Please don't abuse the service. It's not fun when people fuck with your stuff, so don't
+        fuck with mine, please.
+
+      %h2 Linking
+      %p
+        You're welcome to link to the website. I would however appreciate if you didn't hotlink
+        to images, stylesheets, javascript files or other assets hosted within the application.
+
+      %h2 Try and enjoy using the application
+      %p
+        If you have any comments / suggestions / complaints related to the application, please email
+        me at #{mail_to 'whiteboard@markconnell.co.uk'}. Thanks!
