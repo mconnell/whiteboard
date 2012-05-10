@@ -7,6 +7,7 @@ gem 'high_voltage', '1.0.1'
 gem 'devise',       '2.0.4'
 gem 'delayed_job_active_record', '0.3.2'
 gem 'daemons',      '1.1.8'
+gem 'simple_form',  '1.5.2'
 
 group :development, :test do
   gem 'rspec-rails', '2.8.1'

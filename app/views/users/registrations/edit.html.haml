@@ -5,30 +5,14 @@
         My Details
         = link_to '← Return to whiteboards', whiteboards_path
 
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-        = devise_error_messages!
+      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        %h2 Personal Information
+        = f.input :email
 
-        .email
-          = f.label :email
-          %br/
-          = f.email_field :email
+        %h2 Change Password
+        = f.input :password, :hint => "leave blank if you don't want to change it"
+        = f.input :password_confirmation
 
-        .password
-          = f.label :password
-          %i (leave blank if you don't want to change it)
-          %br/
-          = f.password_field :password, :autocomplete => "off"
-
-        .password_confirmation
-          = f.label :password_confirmation
-          %br/
-          = f.password_field :password_confirmation
-
-        .current_password
-          = f.label :current_password
-          %i (we need your current password to confirm your changes)
-          %br/
-          = f.password_field :current_password
-
-        .submit
-          = f.submit "Update"
+        %h2 Confirm Changes
+        = f.input :current_password, :hint => "we need your current password to confirm your changes"
+        = f.button :submit, 'Update My Details'
