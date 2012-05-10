@@ -37,3 +37,6 @@ WhiteboardApp::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'test.host' }
 end
+
+Delayed::Worker.delay_jobs = false
+

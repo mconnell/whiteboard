@@ -9,23 +9,13 @@ class WhiteboardsController < ApplicationController
   end
 
   def new
-    @whiteboard = current_user.whiteboards.build
+    @whiteboard = current_user.whiteboards.create
+    redirect_to edit_whiteboard_path(@whiteboard)
   end
 
   def edit
     @whiteboard = current_user.whiteboards.find(params[:id])
   end
-
-  def create
-    @whiteboard = current_user.whiteboards.build(params[:whiteboard])
-
-    if @whiteboard.save
-      redirect_to @whiteboard, :notice => 'whiteboard was successfully created.'
-    else
-      render 'new'
-    end
-  end
-
 
   def update
     @whiteboard = current_user.whiteboards.find(params[:id])

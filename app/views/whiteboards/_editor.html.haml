@@ -5,9 +5,8 @@
   .pen#blue_pen
   .pen#green_pen
 
-= form_for @whiteboard do |f|
+= form_for @whiteboard, :remote => true do |f|
   = f.hidden_field :data
-  = f.submit
 
 #editor
 
@@ -21,6 +20,7 @@
   // When the sketchpad changes, update the input field.
   sketchpad.change(function() {
     $("#whiteboard_data").val(sketchpad.json());
+    $("form.edit_whiteboard").submit();
   });
 
   function selectPen(id){
