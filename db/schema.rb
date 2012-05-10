@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(:version => 20120504193955) do
 
   create_table "whiteboards", :force => true do |t|
     t.integer  "user_id"
-    t.text     "data"
+    t.text     "data",          :default => "[]"
     t.string   "png_file_path"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end
