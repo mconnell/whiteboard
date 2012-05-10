@@ -72,7 +72,7 @@ WhiteboardApp::Application.configure do
     :port           => 25,
     :domain         => "whiteboard.markconnell.co.uk",
     :authentication => :plain,
-    :user_name      => "sendgrid@markconnell.co.uk",
+    :user_name      => "mconnell",
     :password       => "aewe1jei7eeKeazeijei"
   }
 
