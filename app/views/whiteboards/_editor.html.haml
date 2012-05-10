@@ -17,17 +17,32 @@
     editing: true
   });
 
-  sketchpad.pen().color('#3A3635');
-
   // When the sketchpad changes, update the input field.
   sketchpad.change(function() {
     $("#whiteboard_data").val(sketchpad.json());
   });
 
-  $('#black_pen').click(function(){ sketchpad.pen().color('#3A3635'); });
-  $('#red_pen').click(function(){ sketchpad.pen().color('#E0312C'); });
-  $('#blue_pen').click(function(){ sketchpad.pen().color('#184E96'); });
-  $('#green_pen').click(function(){ sketchpad.pen().color('#178D75'); });
+  function selectPen(id){
+    switch(id){
+      case 'black_pen':
+        sketchpad.pen().color('#3A3635');
+        break;
+      case 'red_pen':
+        sketchpad.pen().color('#E0312C');
+        break;
+      case 'blue_pen':
+        sketchpad.pen().color('#184E96');
+        break;
+      case 'green_pen':
+        sketchpad.pen().color('#178D75');
+        break;
+    };
+    $('.pen').removeClass('active');
+    $("#"+id).addClass('active');
+  };
+  selectPen('black_pen');
+
+  $('.pen').click(function(){ selectPen($(this).attr('id')) })
 
 - if @whiteboard.persisted?
   :javascript

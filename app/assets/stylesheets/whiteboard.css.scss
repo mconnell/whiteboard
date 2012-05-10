@@ -122,16 +122,22 @@ a{
 }
 
 .pens{
+
   .pen{
     width: 20px;
     height: 20px;
-    border: 2px solid transparent;
     display: inline-block;
+    border: 2px solid $main_bg_colour;
 
     &#black_pen{ background-color: $black_pen; }
     &#blue_pen { background-color: $blue_pen; }
     &#red_pen  { background-color: $red_pen; }
     &#green_pen{ background-color: $green_pen; }
+
+    &.active{
+      border: 2px solid white;
+      outline: 1px solid darken($main_bg_colour, 5);
+    }
   }
 }
 
