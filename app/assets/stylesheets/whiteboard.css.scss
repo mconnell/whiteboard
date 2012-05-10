@@ -122,6 +122,11 @@ a{
 }
 
 .pens{
+  span{
+    display: block;
+    color: darken($main_bg_colour, 30);
+    margin-bottom: 2px;
+  }
 
   .pen{
     width: 20px;
