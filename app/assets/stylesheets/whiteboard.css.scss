@@ -122,10 +122,15 @@ a{
 }
 
 .pens{
+  position: relative;
+  padding-left: 100px;
+
   span{
-    display: block;
+    display: inline-block;
     color: darken($main_bg_colour, 30);
-    margin-bottom: 2px;
+    position: absolute;
+    left: 0;
+    top: 2px;
   }
 
   .pen{
