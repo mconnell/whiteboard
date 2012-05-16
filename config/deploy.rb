@@ -1,22 +1,57 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+require "bundler/capistrano"
+load 'deploy/assets'
 
-set :scm, :subversion
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :application, 'whiteboard'
+set :scm,         :git
+set :repository,  "git@github.com:mconnell/#{application}.git"
+set :rails_env,   :production
+set :use_sudo,    false
+set :user,        application
+set :deploy_to,   "/u/apps/#{application}"
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+# deployment servers
+server = "176.58.102.12"
+role :web, server                    # Web server (Nginx)
+role :app, server                    # App server (unicorn)
+role :db,  server, :primary => true  # db server  (postgres)
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+task :symlink_config_files, :roles => :app do
+  run "cd #{latest_release}/config && rm -f database.yml && ln -s #{shared_path}/config/database.yml"
+  run "cd #{latest_release}/config && rm -f unicorn.rb   && ln -s #{shared_path}/config/unicorn.rb"
+end
+unicorn_binary
+
+# unicorn tasks
+set :unicorn_binary, "bundle exec unicorn"
+set :unicorn_config, "#{current_path}/config/unicorn.rb"
+set :unicorn_pid,    "#{current_path}/tmp/pids/unicorn.pid"
+
+namespace :unicorn do
+  task :start, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && #{unicorn_binary} -c #{unicorn_config} -E #{rails_env} -D"
+  end
+  task :stop, :roles => :app, :except => { :no_release => true } do
+    run "kill `cat #{unicorn_pid}`"
+  end
+  task :graceful_stop, :roles => :app,
+  :except => { :no_release => true } do
+    run "kill -s QUIT `cat #{unicorn_pid}`"
+  end
+  task :reload, :roles => :app, :except => { :no_release => true } do
+    run "kill -s USR2 `cat #{unicorn_pid}`"
+  end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    if remote_file_exists?(unicorn_pid)
+      stop
+    end
+    start
+  end
+end
+after "deploy:restart", "unicorn:restart"
+
+def remote_file_exists?(full_path)
+  'true' ==  capture("if [ -e #{full_path} ]; then echo 'true'; fi").strip
+end
