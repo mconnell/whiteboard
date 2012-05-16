@@ -4,7 +4,7 @@ class Whiteboard < ActiveRecord::Base
   belongs_to :user
 
   after_save :generate_png_file
-  after_destroy :remove_png_file
+  before_destroy :remove_png_file
 
   WIDTH  = 938
   HEIGHT = 550

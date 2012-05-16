@@ -22,6 +22,7 @@ role :db,  server, :primary => true  # db server  (postgres)
 task :symlink_config_files, :roles => :app do
   run "cd #{latest_release}/config && rm -f database.yml && ln -s #{shared_path}/config/database.yml"
   run "cd #{latest_release}/config && rm -f unicorn.rb   && ln -s #{shared_path}/config/unicorn.rb"
+  run "cd #{latest_release}/public && ln -s #{shared_path}/pngs"
 end
 before "deploy:assets:precompile", "symlink_config_files"
 
