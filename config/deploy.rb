@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require "delayed/recipes"
 load 'deploy/assets'
 
 set :application, 'whiteboard'
@@ -22,6 +23,11 @@ task :symlink_config_files, :roles => :app do
   run "cd #{latest_release}/config && rm -f database.yml && ln -s #{shared_path}/config/database.yml"
   run "cd #{latest_release}/config && rm -f unicorn.rb   && ln -s #{shared_path}/config/unicorn.rb"
 end
+before "deploy:assets:precompile", "symlink_config_files"
+
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
 
 # unicorn tasks
 set :unicorn_binary, "bundle exec unicorn"
@@ -50,6 +56,7 @@ namespace :unicorn do
   end
 end
 after "deploy:restart", "unicorn:restart"
+
 
 def remote_file_exists?(full_path)
   'true' ==  capture("if [ -e #{full_path} ]; then echo 'true'; fi").strip
