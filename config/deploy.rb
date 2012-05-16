@@ -22,7 +22,6 @@ task :symlink_config_files, :roles => :app do
   run "cd #{latest_release}/config && rm -f database.yml && ln -s #{shared_path}/config/database.yml"
   run "cd #{latest_release}/config && rm -f unicorn.rb   && ln -s #{shared_path}/config/unicorn.rb"
 end
-unicorn_binary
 
 # unicorn tasks
 set :unicorn_binary, "bundle exec unicorn"
