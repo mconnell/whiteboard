@@ -8,6 +8,11 @@ gem 'devise',       '2.0.4'
 gem 'delayed_job_active_record', '0.3.2'
 gem 'daemons',      '1.1.8'
 gem 'simple_form',  '1.5.2'
+gem 'unicorn'
+
+group :development do
+  gem 'capistrano'
+end
 
 group :development, :test do
   gem 'rspec-rails', '2.8.1'
@@ -21,9 +26,3 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier',     '>= 1.0.3'
 end
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
