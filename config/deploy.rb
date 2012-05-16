@@ -13,7 +13,7 @@ ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
 # deployment servers
-server = "176.58.102.12"
+server = "firefly.markconnell.co.uk"
 role :web, server                    # Web server (Nginx)
 role :app, server                    # App server (unicorn)
 role :db,  server, :primary => true  # db server  (postgres)
